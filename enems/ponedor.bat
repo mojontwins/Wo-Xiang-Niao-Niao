@@ -1,1 +1,1 @@
-..\utils\ponedor.exe enems.ene
+..\utils\ponedor.exe enems.ene  %1 %2 %3 %4

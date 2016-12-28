@@ -143,7 +143,7 @@ void game_title () {
 		} else if (pad0 & PAD_SELECT) {
 			cur_level = last_level & 0xfe; break;
 		} else if ((pad0 & (PAD_A | PAD_B)) == (PAD_A | PAD_B)) {
-			cur_level = 8; break;
+			cur_level = 4; break;
 		}
 		pal_col (3, rda);
 		oam_hide_rest (0);

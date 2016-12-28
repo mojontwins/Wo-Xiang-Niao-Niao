@@ -1291,3 +1291,21 @@ La idea: Ofrecer una ayuda al respecto.
 La idea es: si en la primera fase de cada mundo consigues llegarl final con más de las 8 moscas que quiere el rano, salta una fase bonus. La fase bonus ofrece un mapeado con agujeros y algún enemigo sencillo, principalmente, y en ella hay 8 moscas artificiales.
 
 Si te matan o te caes en la fase bonus, se acabó. Sólo hay una oportunidad. Cuando empiezas la fase de autoavance, no partes de 0 moscas, sino que partes del número de moscas artificiales que hayas conseguido en la fase bonus. Así se facilita mucho la tarea, porque tendrás que coger menos moscas para tener 8 al final.
+
+~~
+
+Parece que funciona, pero necesitará tuning. Como todo :-)
+
+20161128
+========
+
+El Multicart está ya casi fino (faltan dos músicas y arreglar un par de flecos, y es algo que tampoco me importaría que se quedase sin hacer, a estas alturas) así que le voy a dar un poquito más a Pong Pong. Acabo de terminar de colocar los tiles para la fase del hielo. Pongo enemigos y a probar.
+
+Con esto ya quedaría finiquitado el juego, a falta de limar aristas, y listo papeles para la compo.
+
+~~
+ 
+Enemigos colocados, voy a probar. También voy a probar a poner RX = 0 en el hielo, que ahora no resbala lo suficiente.
+
+Y luego a fregal.
+
