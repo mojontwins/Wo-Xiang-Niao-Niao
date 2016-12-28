@@ -1,0 +1,710 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pobjs",
+				"pobjs_starter"
+			],
+			[
+				"ppu",
+				"ppu_wait_nmi"
+			],
+			[
+				"gp",
+				"gp_addr"
+			],
+			[
+				"PLAYER",
+				"PLAYER_VY_JUMP_MAX"
+			],
+			[
+				"PLAY",
+				"PLAYER_VY_FALLING_MAX"
+			],
+			[
+				"sp_",
+				"sp_PrintAtInv"
+			],
+			[
+				"TWO_SETS",
+				"TWO_SETS_MAPPED"
+			],
+			[
+				"TWO_SET",
+				"TWO_SETS_SEL"
+			],
+			[
+				"PSGSFX",
+				"PSGSFXPlay"
+			],
+			[
+				"PSG",
+				"PSGSFXPlay"
+			],
+			[
+				"MS_TYPE_",
+				"MS_TYPE_SINGLE"
+			],
+			[
+				"SG",
+				"SG_setTile"
+			],
+			[
+				"SG_",
+				"SG_setNextTileatXY"
+			],
+			[
+				"MS",
+				"MS_MAX"
+			],
+			[
+				"UNSA",
+				"UNSAFE_SG_copySpritestoSAT"
+			],
+			[
+				"UNS",
+				"UNSAFE_SG_copySpritestoSAT"
+			],
+			[
+				"MS_",
+				"MS_TYPE_EMPTY"
+			],
+			[
+				"pgo",
+				"pgotten_uwol"
+			],
+			[
+				"pgt",
+				"pgtmx_meemaid"
+			],
+			[
+				"PSTAT_",
+				"PSTATE_NAKED"
+			],
+			[
+				"draw_",
+				"draw_game_tile"
+			],
+			[
+				"FAN",
+				"FANTY_MAXV"
+			],
+			[
+				"show_",
+				"show_coins_vs"
+			],
+			[
+				"GP_",
+				"GM_2P_VS"
+			],
+			[
+				"PSTATE",
+				"PSTATE_DEAD"
+			],
+			[
+				"pf",
+				"pflickering"
+			],
+			[
+				"PF",
+				"PFACING_LEFT"
+			],
+			[
+				"A",
+				"TOP_ADJUST"
+			],
+			[
+				"TI_B",
+				"TI_BACKGROUNDS"
+			],
+			[
+				"update",
+				"update_list_index"
+			],
+			[
+				"SMS_setTile",
+				"SMS_setTileatXY"
+			],
+			[
+				"VDPS",
+				"VDPStatusPort"
+			],
+			[
+				"overfl",
+				"VDPSpriteOverflow"
+			],
+			[
+				"fra",
+				"frame_counter"
+			],
+			[
+				"PLAYER_",
+				"PLAYER_GENITAL"
+			],
+			[
+				"PLAYER_HA",
+				"PLAYER_HAS_JUMP"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 357.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 382.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/assets",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/ram",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/trash",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/utils"
+	],
+	"file_history":
+	[
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/diario.txt",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/game.h",
+		"/C/Users/na_th_an/Desktop/sleepyR/sleepyR/src/defs.c",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/PC/AllegroGL/__Basic_Project/main.c",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/screens.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/make.bat",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/ram/globals_bss.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/pongpong.c",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/ram/globals_zp.h",
+		"/C/Users/na_th_an/Desktop/sleepyR/sleepyR/src/blitter.c",
+		"/C/Users/na_th_an/Desktop/sleepyR/sleepyR/src/printer.c",
+		"/C/Users/na_th_an/Desktop/sleepyR/sleepyR/src/main.c",
+		"/C/Users/na_th_an/Desktop/sleepyR/sleepyR/src/render.c",
+		"/C/Users/na_th_an/Google Drive/cosas/NewDevCppFiles/allegro42/makefile.all",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/definitions.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/camera.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/map/pallist.txt",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/precalc_attr_bits.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/general.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/scroll.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/precalcs.h",
+		"/C/Users/na_th_an/AppData/Local/Temp/7zOB377.tmp/screens.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/printer.h",
+		"/C/Users/na_th_an/AppData/Local/Temp/7zO55C7.tmp/screens.h",
+		"/C/Users/na_th_an/AppData/Local/Temp/7zO2C45.tmp/ending.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enems.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_update.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_update.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enems.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/game.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/trash/dev.20160720/make.bat",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/make.bat",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/pongpong.c",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/screens.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/tspals.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_bloco.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_buzzer.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_fanty.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_final_frog.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_gyrosaw.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_linear.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_pezon.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/player.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/ram/globals_zp.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/crt0.s",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/definitions.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/neslib.s",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/NES/PongPong/dev/pongpong.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/AbaRwk/dev/music.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/music.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/AbaRwk/dev/crt0.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/famitone2.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/jetpaco/dev/crt0.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/crt0.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/jetpaco/dev/neslib.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/jetpaco/dev/mus_game_a.s",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/mybcd.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/player.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enems.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_bloco.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_buzzer.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_fanty.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_gyrosaw.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_linear.h",
+		"/C/Users/na_th_an/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_pezon.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/printer.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/ram/globals_bss.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/pongpong.c",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/player.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/scroll.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/precalcs.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/pongpong.sublime-project",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/make.bat",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/definitions.h",
+		"/C/Users/NaThan/Google Drive/Maritrini/dev/cpc/Sir CPC 2 A/dev/engine.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/Lala/lala.sublime-project",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/neslib.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/game.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/general.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/screens.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/diario.txt",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_pezon.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_update.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_gyrosaw.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_collision.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_final_frog.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/camera.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/player.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/ram/globals_zp.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/title.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/precalcs.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enems.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_linear.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/pongpong.c",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/printer.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/labels.txt",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/enems.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/make.bat",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/ram/globals_bss.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/metasprites.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/sspl.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/diario.txt",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/neslib.s",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/palettes.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/game.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/screens.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_pezon.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/definitions.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_bloco.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/famitone2.s",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/crt0.s",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/neslib.s",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/map/pallist.txt",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/nes.cfg",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/ogt/makemusic.bat",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/mybcd.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/map.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/scroll.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine/enemmods/enems_buzzer.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/screens.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/assets/palettes.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/maritrini/maritester/dev/player.h",
+		"/D/Google Drive/Maritrini/dev/NES/sir ababol/dev/scroller.h",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/game.c",
+		"/C/Users/ASUStado/Google Drive/Maritrini/dev/NES/PongPong/dev/engine.h",
+		"/D/Google Drive/Maritrini/dev/NES/SuperUwol/dev/compile.bat",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/dev/screens.h",
+		"/D/Google Drive/Maritrini/dev/NES/PongPong/map/map.h"
+	],
+	"find":
+	{
+		"height": 44.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"palss1",
+			"fg",
+			"last_level",
+			"ATTR",
+			"mtile_palettes",
+			"bonus",
+			"bloco",
+			"last_level",
+			"fski",
+			"NTSC_MODE",
+			"detectntsc",
+			"detectNTSC",
+			"NTSC_MODE",
+			"psoff",
+			"FRAME_CNT2",
+			"FT_PITCH_FIX",
+			"*gp_ul ++ = rda; *gp_ul ++ = rda + 1;",
+			"rda = ((((*gp_gen ++) >> 4) + 16) << 2) + col_offs;",
+			"rda = ((((*gp_gen ++) & 15) + 16) << 2) + col_offs;",
+			"(*gp_gen ++) >> 4",
+			"(*gp_gen ++) & 15",
+			"& 15",
+			"*gp_gen ++",
+			",",
+			"psignal",
+			"pad0",
+			"pbutt",
+			"attr",
+			"SET TILE",
+			"DISABLE_HOTSPOTS",
+			"flag",
+			"redraw",
+			"ISEVIL",
+			"IS_EVIL2",
+			"IS_EVIL5",
+			"== 1",
+			"& 1",
+			"== 1",
+			"& 1",
+			"SET_TILE",
+			"SET TILE",
+			"exti",
+			"FIRST_TIME_FLAG",
+			"scr",
+			"SCREEN 14",
+			"ENTERING SCREEN 2",
+			"TEXT",
+			"SCRIPTING",
+			"beepfx",
+			"SCRIPT",
+			"TALISMAN",
+			"$TALISMAN",
+			"FLAG 14",
+			"FLAG 13",
+			"FLAG 12",
+			"FLAG 11",
+			"FLAG 10",
+			"FLAG 9",
+			"FLAG 8",
+			"FLAG 7",
+			"FLAG 6",
+			"FLAG 4",
+			"FLAG 3",
+			"FLAG 2",
+			"FLAG 1",
+			"TWO_SETS",
+			"respawn",
+			"p_killme",
+			"OLD_ENEMS",
+			"CUSTOM",
+			"CSTOM",
+			"CUSTOM",
+			"hud",
+			"key_jump",
+			"ifndef",
+			"31",
+			"30'",
+			"\\",
+			"kill_player",
+			"gpt",
+			"kill_player",
+			"EVIL_ZONE_BEEPS_COUNT",
+			"evil_zone",
+			"game_over",
+			"coin",
+			"start",
+			"hitv",
+			"render",
+			"ticker",
+			"sfx_play",
+			"music_",
+			"title",
+			"pyramid",
+			"hitv",
+			"htv",
+			"hitv",
+			"draw_at",
+			"reset_",
+			"}",
+			"pdead",
+			"UWOL",
+			"(unsig",
+			"displayOn",
+			"turnonfeature",
+			"VDPReg",
+			"vdpblank",
+			"0x17",
+			"1x1",
+			"hack",
+			"spritenextfree",
+			"hack",
+			"gp_gen",
+			"ms",
+			"hack",
+			"setc",
+			"spritenextfree",
+			"set_address_CRAM",
+			"print_logo",
+			"PAD_",
+			"sprites",
+			"PAD_",
+			"PAD-a",
+			"nmi",
+			"p_s_up",
+			"delay",
+			"uwol",
+			"pstate_uwol",
+			"PSTATE_NAKED"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"*gp_ul ++ = rda ++; *gp_ul ++ = rda;",
+			"rda = mtile_pattern_offsets [(*gp_gen ++) >> 4] + col_offs;",
+			"rda = mtile_pattern_offsets [(*gp_gen ++) & 15] + col_offs;",
+			"((*gp_gen ++) >> 4) + 16",
+			"((*gp_gen ++) & 15) + 16",
+			">> 4",
+			"(*gp_gen ++) & 15",
+			", ",
+			"pad",
+			"& 12",
+			"& 15",
+			"IS_EVIL",
+			"SET TILE",
+			"FIRST_TIME",
+			"TALISMAN_PIECES",
+			"$TALISMAN_PIECES",
+			"$CANIJA_GONE",
+			"$TALISMAN_4",
+			"$TALISMAN_3",
+			"$TALISMAN_2",
+			"$TALISMAN_1",
+			"$TRAMPA",
+			"$GO_SEE",
+			"$TESORO_MORO",
+			"$ALLPURPOSE",
+			"$ENCANTAMIENTO_PIMIENTO",
+			"$HECHIZO_POSTIZO",
+			"$TALISMAN",
+			"$COINS",
+			"/",
+			"en_an_t",
+			"Uwol",
+			"gp_ms",
+			"p_s",
+			"meemaid",
+			"gp_gen",
+			"meemaid",
+			"//sfx_play",
+			"SG",
+			"if (game_mode != GM_2P_VS) add_to_score",
+			"pcoins_uwol",
+			"_meemaid",
+			"add_to_score_meemaid (",
+			"add_to_score_uwol (",
+			"_meemaid",
+			"//pal_spr",
+			"_meemaid",
+			"y",
+			"_meemaid",
+			"UPDATE",
+			"ADD_UPD",
+			"",
+			"_meemaid",
+			">> 4",
+			"<< 4",
+			"",
+			"_b",
+			"attr_table",
+			"ATTR",
+			"0xff",
+			"0x00",
+			"OAM_BASE_ENEMS",
+			"enems",
+			"gp_tsmbk",
+			"attr (",
+			"ATTR (",
+			"ATTR",
+			"pals=",
+			"_LSB",
+			"_MSB",
+			", ",
+			"SG_",
+			"SATADDRESS",
+			"PNTADDRESS",
+			"SG",
+			"MAX_SPRITES",
+			"[gpit]",
+			"[0]",
+			"_b",
+			"_a,",
+			"0x03",
+			"_pl_",
+			"\\n",
+			"\\u",
+			"\\o",
+			"\\i",
+			"\\e",
+			"\\a",
+			"\\n",
+			"\\u",
+			"\\o",
+			"\\i",
+			"\\e",
+			"\\a",
+			"T.A.R.D.I.S.",
+			"8<",
+			"EXTERN_E",
+			"k2t_code",
+			"k2t_i",
+			"k2t_y",
+			"k2t_x",
+			"k2t_i",
+			"000",
+			"6",
+			"5",
+			"55556666O",
+			"TOCINO MARÍN ALBERTITO",
+			"last",
+			"k2t_length",
+			"k2t_last_key",
+			"k2t_selected",
+			"k2t_color",
+			"..\\..\\",
+			"/",
+			"myFileLen",
+			"RXVAL",
+			"AXVAL",
+			"RXVAL",
+			"pixels",
+			"pixel",
+			"defined (",
+			"/",
+			"\\"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "pongpong.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"/D/Google Drive/Maritrini/dev/NES/yun/yun.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 205.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
