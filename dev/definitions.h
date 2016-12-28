@@ -63,7 +63,7 @@
 #define PLAYER_AX				4	
 #define PLAYER_RX				4
 #define PLAYER_AX_SLIP			1
-#define PLAYER_RX_SLIP			1
+#define PLAYER_RX_SLIP			0
 #define PLAYER_VX_MIN (PLAYER_AX << 2)
 #define PLAYER_V_REBOUND		56
 #define PLAYER_MAX_ITEMS		8		// Might be more. But you need 8.
