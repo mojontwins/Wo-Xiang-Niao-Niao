@@ -21,7 +21,10 @@ void screen_title (void) {
 
 void screen_level (void) {
 	if (level < 8) {
-		p_s (12, 14, "LEVEL"); p_t2d (18, 14, level + 1);
+		p_s (11, 14, "LEVEL: "); /*p_t2d (18, 14, level + 1);*/
+		vram_put (DIGIT (1 + (level >> 1)));
+		vram_put (13);
+		vram_put (DIGIT (1 + (level & 1)));
 		p_s (12, 16, "LIVES"); p_t2d (18, 16, plives);
 	} else {
 		p_s (10, 15, "BONUS STAGE!");
@@ -30,10 +33,10 @@ void screen_level (void) {
 
 void screen_bonus (void) {
 	if (pobjs == 8) {
-		rda = 14; p_s (12, 16, "PERFECT!");
-	} else rda = 15;
+		rdb = 14; p_s (12, 16, "PERFECT!");
+	} else rdb = 15;
 
-	p_s (10, rda, "GOT    BEES!"); 
-	p_t2d (13, rda, pobjs_starter);
+	p_s (10, rdb, "GOT    BEES!"); 
+	p_t2d (14, rdb, pobjs_starter);
 
 }

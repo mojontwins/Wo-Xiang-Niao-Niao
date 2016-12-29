@@ -21,6 +21,7 @@ void player_init (void) {
 }
 
 void player_kill (signed char sign) {
+	if (sign == 0) sign = -1; // Patchy patch
 	pvx = add_sign (sign, PLAYER_VX_MAX);
 	pvy = -PLAYER_VY_JUMP_MAX;
 	if (pen) {
@@ -78,7 +79,7 @@ void player_move (void) {
 			} else if (pvy + pgtmy > 0) {
 				cy1 = cy2 = (pry + 15) >> 4;
 				cm_two_points ();
-				if ((at1 & 12) || (at2 & 12)) {
+				if (((pry - 1) & 15) < 4 && ((at1 & 12) || (at2 & 12))) {
 					pgotten = pvy = 0;
 					pry = (cy1 - 1) << 4;
 					py = pry << FIX_BITS;
@@ -128,11 +129,14 @@ void player_move (void) {
 
 			if (pad & PAD_LEFT) {
 				pfacing = PFACING_LEFT;
+				ppressingh = 1;
 				if (pvx > -PLAYER_VX_MAX) pvx -= (pslip ? PLAYER_AX_SLIP : PLAYER_AX);
 			} else if (pad & PAD_RIGHT) {
 				pfacing = PFACING_RIGHT;
+				ppressingh = 1;
 				if (pvx < PLAYER_VX_MAX) pvx += (pslip ? PLAYER_AX_SLIP : PLAYER_AX);
 			} else {
+				ppressingh = 0;
 				if (pvx > 0) {
 					pvx -= (pslip ? PLAYER_RX_SLIP : PLAYER_RX); if (pvx < 0) pvx = 0;
 				} else if (pvx < 0) {
@@ -191,7 +195,7 @@ void player_move (void) {
 	} else if (pkilled || (!pen && penhit > halfticks)) {
 		pfr = PCELL_KILLED;
 	} else if (ppossee || pgotten) {
-		if (ABS (pvx) > PLAYER_VX_MIN) {
+		if (ABS (pvx) > PLAYER_VX_MIN && (!pslip || ppressingh)) {
 			pfr = PCELL_WALK_BASE + ((prx >> 4) & 3);
 		} else pfr = PCELL_STANDING;
 	} else if (pbutt) {

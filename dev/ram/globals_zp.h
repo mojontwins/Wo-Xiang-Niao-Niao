@@ -63,6 +63,7 @@ signed int pvx, pvy;
 unsigned char pj, pctj, pjb, pbutt;
 unsigned char pen, penhit;
 unsigned char do_game_loop;
+unsigned char ppressingh;
 
 unsigned char psoff;
 

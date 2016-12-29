@@ -73,15 +73,16 @@ void main (void) {
 			game_cycle ();
 
 			if (game_res == 1) {
+				pcheckpoint = 0;
+				pobjs_starter = 0;
 				if (!(level & 1)) {
 					if (pobjs > PLAYER_MAX_ITEMS) {
 						level = 8; game_cycle ();
 						pobjs_starter = pobjs;
 						game_bonus ();
 					}
-				} else pobjs_starter = 0;
+				} 
 				cur_level ++;
-				pcheckpoint = 0;
 				if (cur_level == 8) {
 					game_ending ();
 					break; 
