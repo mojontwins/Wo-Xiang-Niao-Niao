@@ -2,7 +2,7 @@
 // Copyleft 2015 The Mojon Twins
  
 const unsigned char ts_pals [] = {
-     0
+	 0
 ,  0
 ,  0
 ,  0
@@ -19,7 +19,7 @@ const unsigned char ts_pals [] = {
 ,  0
 ,  3
 , 
-     3
+	 3
 ,  2
 ,  2
 ,  2
@@ -36,7 +36,7 @@ const unsigned char ts_pals [] = {
 ,  0
 ,  2
 , 
-     0
+	 0
 ,  0
 ,  0
 ,  0

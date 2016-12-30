@@ -244,36 +244,36 @@ void __fastcall__ delay(unsigned char frames);
 
 
 
-#define PAD_A            0x01
-#define PAD_B            0x02
-#define PAD_SELECT        0x04
-#define PAD_START        0x08
-#define PAD_UP            0x10
-#define PAD_DOWN        0x20
-#define PAD_LEFT        0x40
-#define PAD_RIGHT        0x80
+#define PAD_A			0x01
+#define PAD_B			0x02
+#define PAD_SELECT		0x04
+#define PAD_START		0x08
+#define PAD_UP			0x10
+#define PAD_DOWN		0x20
+#define PAD_LEFT		0x40
+#define PAD_RIGHT		0x80
 
-#define OAM_FLIP_V        0x80
-#define OAM_FLIP_H        0x40
-#define OAM_BEHIND        0x20
+#define OAM_FLIP_V		0x80
+#define OAM_FLIP_H		0x40
+#define OAM_BEHIND		0x20
 
-#define MAX(x1,x2)        ((x1)<(x2)?(x2):(x1))
-#define MIN(x1,x2)        ((x1)<(x2)?(x1):(x2))
+#define MAX(x1,x2)		((x1)<(x2)?(x2):(x1))
+#define MIN(x1,x2)		((x1)<(x2)?(x1):(x2))
 
-#define MASK_SPR        0x10
-#define MASK_BG            0x08
-#define MASK_EDGE_SPR    0x04
-#define MASK_EDGE_BG    0x02
+#define MASK_SPR		0x10
+#define MASK_BG			0x08
+#define MASK_EDGE_SPR	0x04
+#define MASK_EDGE_BG	0x02
 
-#define NAMETABLE_A        0x2000
-#define NAMETABLE_B        0x2400
-#define NAMETABLE_C        0x2800
-#define NAMETABLE_D        0x2c00
+#define NAMETABLE_A		0x2000
+#define NAMETABLE_B		0x2400
+#define NAMETABLE_C		0x2800
+#define NAMETABLE_D		0x2c00
 
-#define NULL            0
-#define TRUE            1
-#define FALSE            0
+#define NULL			0
+#define TRUE			1
+#define FALSE			0
 
-#define NT_UPD_HORZ        0x40
-#define NT_UPD_VERT        0x80
-#define NT_UPD_EOF        0xff
+#define NT_UPD_HORZ		0x40
+#define NT_UPD_VERT		0x80
+#define NT_UPD_EOF		0xff

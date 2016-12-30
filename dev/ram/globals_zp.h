@@ -2,14 +2,14 @@
 // Copyleft 2016 by The Mojon Twins
 
 // Pad control
-unsigned char pad0, pad;                        
+unsigned char pad0, pad;						
 
 // Game counters
 unsigned char half_life;
 unsigned char frame_counter;
 
 // General all-purpose, all-around vars
-unsigned char i, gpit, gpjt, scit;            
+unsigned char i, gpit, gpjt, scit;			
 unsigned char *gp_gen, *gp_aux, *gp_ul;
 unsigned int gp_addr;
 unsigned char rda, rdb, rdc, rdd;
@@ -24,14 +24,14 @@ unsigned char cx1, cy1, cx2, cy2, at1, at2;
 unsigned char *behs;
 
 // Scroller
-unsigned char col_idx;         // Column to draw (0x00 - 0xff)
-unsigned int col_adr;        // VRAM address to draw to (patterns)
-unsigned int col_attr_adr;    // VRAM address to draw to (attributes)
-unsigned char *col_ptr;     // Points to current column
-unsigned char *map_ptr;        // Contains map + (level offset)
-unsigned char col_ctr;        // Column counter, counts 0 1 2 3
-unsigned char col_offs;        // Offset in metatile. 0 or 2.
-unsigned char *mtile_pattern_offsets;    // Precalculates starting pattern of each metatile
+unsigned char col_idx; 		// Column to draw (0x00 - 0xff)
+unsigned int col_adr;		// VRAM address to draw to (patterns)
+unsigned int col_attr_adr;	// VRAM address to draw to (attributes)
+unsigned char *col_ptr; 	// Points to current column
+unsigned char *map_ptr;		// Contains map + (level offset)
+unsigned char col_ctr;		// Column counter, counts 0 1 2 3
+unsigned char col_offs;		// Offset in metatile. 0 or 2.
+unsigned char *mtile_pattern_offsets;	// Precalculates starting pattern of each metatile
 unsigned char *mtile_palettes;
 
 // Camera
