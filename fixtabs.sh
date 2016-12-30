@@ -1,2 +1,5 @@
-find . -name '*.h' ! -type d -exec bash -c 'expand -t 4 "$0" > /tmp/e && mv /tmp/e "$0"' {} \;
-find . -name '*.c' ! -type d -exec bash -c 'expand -t 4 "$0" > /tmp/e && mv /tmp/e "$0"' {} \;
+#!/bin/bash
+find . -iname "*.h" -exec sed -i "s#\t#    #g" '{}' \;
+find . -iname "*.c" -exec sed -i "s#\t#    #g" '{}' \;
+find . -iname "*.bas" -exec sed -i "s#\t#    #g" '{}' \;
+find . -iname "*.bi" -exec sed -i "s#\t#    #g" '{}' \;

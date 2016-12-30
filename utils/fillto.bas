@@ -11,8 +11,8 @@ fOut = Freefile
 Open Command (1) For Binary as #fOut
 
 For i = 1 To Val (Command (2))
-	If Eof (fIn) Then d = 0 Else Get #fIn, , d
-	Put #fOut, , d
+    If Eof (fIn) Then d = 0 Else Get #fIn, , d
+    Put #fOut, , d
 Next i
 
 Close

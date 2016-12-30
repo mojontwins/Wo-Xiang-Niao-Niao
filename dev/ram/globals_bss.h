@@ -2,7 +2,7 @@
 // Copyleft 2016 by The Mojon Twins
 
 // 50 or 60 depending on TV system
-unsigned char ticks, halfticks;				
+unsigned char ticks, halfticks;                
 
 // Update list for VBlank updates
 static unsigned char update_list [UPDATE_LIST_SIZE * 3 + 1];

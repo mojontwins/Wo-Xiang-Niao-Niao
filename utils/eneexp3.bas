@@ -2,7 +2,7 @@
 ' generates minimal contents for usage in small ROMs.
 
 sub usage
-	print "$ eneexp2 enems.ene out.h prefix [yadjust] [nohotspots]"
+    print "$ eneexp2 enems.ene out.h prefix [yadjust] [nohotspots]"
 End Sub
 
 Dim As Integer fIn, fOut
@@ -53,46 +53,46 @@ Print #fOut, "const unsigned char enems_" & prefix & " [] = {"
 
 hl = 0
 For i = 1 To (mapPants * nEnems)
-	Get #fIn, , t
-	Get #fIn, , a: Get #fIn, , b: b = b + yadjust
-	xy1 = (a Shl 4) Or (b And 15)
-	Get #fIn, , a: Get #fIn, , b: b = b + yadjust
-	xy2 = (a Shl 4) Or (b And 15)
-	Get #fIn, , mn
-	Get #fIn, , d: Get #fIn, , d
-	If hl = 0 Then Print #fOut, "	";
-	Print #fOut, "0x" & Hex (t, 2) & ", 0x" & Hex (xy1, 2) & ", 0x" & Hex (xy2, 2) & ", 0x" & Hex (mn, 2);
-	If i < (mapPants * nEnems) Then Print #fOut, ", ";
-	hl = 1 - hl
-	If hl = 0 Then Print #fOut, ""
+    Get #fIn, , t
+    Get #fIn, , a: Get #fIn, , b: b = b + yadjust
+    xy1 = (a Shl 4) Or (b And 15)
+    Get #fIn, , a: Get #fIn, , b: b = b + yadjust
+    xy2 = (a Shl 4) Or (b And 15)
+    Get #fIn, , mn
+    Get #fIn, , d: Get #fIn, , d
+    If hl = 0 Then Print #fOut, "    ";
+    Print #fOut, "0x" & Hex (t, 2) & ", 0x" & Hex (xy1, 2) & ", 0x" & Hex (xy2, 2) & ", 0x" & Hex (mn, 2);
+    If i < (mapPants * nEnems) Then Print #fOut, ", ";
+    hl = 1 - hl
+    If hl = 0 Then Print #fOut, ""
 Next i
 Print #fOut, "};"
 Print #fOut, ""
 If Not noHotspots Then
-	Print #fOut, "// Hotspots structure is {T XY} x MAP_W x MAP_H"
-	Print #fOut, "const unsigned char hotspots_" & prefix & " [] = {"
-	hl = 0
-	For i = 1 To mapPants
-		Get #fIn, , xy1
-		Get #fIn, , xy2
-		xy1 = (xy1 Shl 4) Or (xy2 And 15)
-		Get #fIn, , t
-		if hl = 0 Then Print #fOut, "	";
-		Print #fOut, "0x" & Hex (t, 2) & ", 0x" & Hex (xy1, 2);
-		If i < mapPants Then Print #fOut, ", ";
-		hl = (hl + 1) And 3
-		If hl = 0 Then Print #fOut, ""
-		typeCounters (t) = typeCounters (t) + 1
-	Next i
-	Print #fOut, "};"
-	Print #fOut, ""
-	
-	For i = 0 To 255
-		If typeCounters (i) <> 0 then
-			' Print #fOut, "// Wrote " & typecounters (i) & " hotspots of type " & i
-			Print #fOut, "#define MAX_HOTSPOTS_TYPE_" & i & "	" & typeCounters (i)	
-		End If
-	Next i
+    Print #fOut, "// Hotspots structure is {T XY} x MAP_W x MAP_H"
+    Print #fOut, "const unsigned char hotspots_" & prefix & " [] = {"
+    hl = 0
+    For i = 1 To mapPants
+        Get #fIn, , xy1
+        Get #fIn, , xy2
+        xy1 = (xy1 Shl 4) Or (xy2 And 15)
+        Get #fIn, , t
+        if hl = 0 Then Print #fOut, "    ";
+        Print #fOut, "0x" & Hex (t, 2) & ", 0x" & Hex (xy1, 2);
+        If i < mapPants Then Print #fOut, ", ";
+        hl = (hl + 1) And 3
+        If hl = 0 Then Print #fOut, ""
+        typeCounters (t) = typeCounters (t) + 1
+    Next i
+    Print #fOut, "};"
+    Print #fOut, ""
+    
+    For i = 0 To 255
+        If typeCounters (i) <> 0 then
+            ' Print #fOut, "// Wrote " & typecounters (i) & " hotspots of type " & i
+            Print #fOut, "#define MAX_HOTSPOTS_TYPE_" & i & "    " & typeCounters (i)    
+        End If
+    Next i
 End If
 
 Close fIn, fOut

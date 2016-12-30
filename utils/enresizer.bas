@@ -5,12 +5,12 @@
 #include "mtparser.bi"
 
 sub usage
-	Print "usage:"
-	Print 
-	Print "$ enresizer in=enems.old.ene out=enems.ene newsize=w,h"
-	Print "           in is the input filename."
-	Print "           out is the output filename."
-	Print "           newsize is the new size."
+    Print "usage:"
+    Print 
+    Print "$ enresizer in=enems.old.ene out=enems.ene newsize=w,h"
+    Print "           in is the input filename."
+    Print "           out is the output filename."
+    Print "           newsize is the new size."
 end sub
 
 Dim As Integer fIn, fOut
@@ -57,35 +57,35 @@ Print "> " & mapW & "x" & mapH & " -> " & mapWn & "x" & mapHn
 
 '' One enemy chunk is exactly 8 bytes.
 For y = 0 To mapH-1
-	For x = 0 To mapW-1
-		For i = 0 To nEnems-1
-			dummy = Input (8, fIn)
-			enemyChunks (y, x, i) = dummy
-		Next i
-	Next x
+    For x = 0 To mapW-1
+        For i = 0 To nEnems-1
+            dummy = Input (8, fIn)
+            enemyChunks (y, x, i) = dummy
+        Next i
+    Next x
 Next y
 
 '' One hotspot chunk is exactly 3 bytes.
 For y = 0 To mapH-1
-	For x = 0 To mapW-1
-		dummy = Input (3, fIn)
-		hotspotsChunks (y, x) = dummy
-	Next x
+    For x = 0 To mapW-1
+        dummy = Input (3, fIn)
+        hotspotsChunks (y, x) = dummy
+    Next x
 Next y
 
 '' Now resize!
 For y = 0 To mapHn-1
-	For x = 0 To mapWn-1
-		For i = 0 To nEnems-1
-			Put #fOut, , enemyChunks (y, x, i)
-		Next i 
-	Next x
+    For x = 0 To mapWn-1
+        For i = 0 To nEnems-1
+            Put #fOut, , enemyChunks (y, x, i)
+        Next i 
+    Next x
 Next y
 
 For y = 0 To mapHn-1
-	For x = 0 To mapWn-1
-		Put #fOut, , hotspotsChunks (y, x)
-	Next x
+    For x = 0 To mapWn-1
+        Put #fOut, , hotspotsChunks (y, x)
+    Next x
 Next y
 
 close fIn, fOut

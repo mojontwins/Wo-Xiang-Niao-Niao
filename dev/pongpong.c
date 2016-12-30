@@ -50,50 +50,50 @@
 // Functions
 
 void main (void) {
-	is_ntsc = !!ppu_system ();
-	ticks = is_ntsc ? 60 : 50;
-	halfticks = ticks >> 1;
-	last_level = 0;
+    is_ntsc = !!ppu_system ();
+    ticks = is_ntsc ? 60 : 50;
+    halfticks = ticks >> 1;
+    last_level = 0;
 
-	bank_bg (0);
-	bank_spr (1);
-	pal_bright (0);
-	pal_cycle_init ();
+    bank_bg (0);
+    bank_spr (1);
+    pal_bright (0);
+    pal_cycle_init ();
 
-	while (1) {
-		// title screen
-		game_title ();
+    while (1) {
+        // title screen
+        game_title ();
 
-		pcheckpoint = pobjs_starter = 0;
-		plives = 3;
-		gpit = 5; while (gpit --) bcd_score [gpit] = 16;
+        pcheckpoint = pobjs_starter = 0;
+        plives = 3;
+        gpit = 5; while (gpit --) bcd_score [gpit] = 16;
 
-		while (1) {
-			level = cur_level;
-			game_cycle ();
+        while (1) {
+            level = cur_level;
+            game_cycle ();
 
-			if (game_res == 1) {
-				pcheckpoint = 0;
-				pobjs_starter = 0;
-				if (!(level & 1)) {
-					if (pobjs > PLAYER_MAX_ITEMS) {
-						level = 8; game_cycle ();
-						pobjs_starter = pobjs;
-						game_bonus ();
-					}
-				} 
-				cur_level ++;
-				if (cur_level == 8) {
-					game_ending ();
-					break; 
-				}
-			} else {
-				if (plives) plives --; else {
-					game_over ();
-					break;
-				}
-			}
-		}
-		last_level = cur_level;
-	}
+            if (game_res == 1) {
+                pcheckpoint = 0;
+                pobjs_starter = 0;
+                if (!(level & 1)) {
+                    if (pobjs > PLAYER_MAX_ITEMS) {
+                        level = 8; game_cycle ();
+                        pobjs_starter = pobjs;
+                        game_bonus ();
+                    }
+                } 
+                cur_level ++;
+                if (cur_level == 8) {
+                    game_ending ();
+                    break; 
+                }
+            } else {
+                if (plives) plives --; else {
+                    game_over ();
+                    break;
+                }
+            }
+        }
+        last_level = cur_level;
+    }
 }
