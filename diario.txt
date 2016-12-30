@@ -1296,7 +1296,7 @@ Si te matan o te caes en la fase bonus, se acabó. Sólo hay una oportunidad. Cu
 
 Parece que funciona, pero necesitará tuning. Como todo :-)
 
-20161128
+20161228
 ========
 
 El Multicart está ya casi fino (faltan dos músicas y arreglar un par de flecos, y es algo que tampoco me importaría que se quedase sin hacer, a estas alturas) así que le voy a dar un poquito más a Pong Pong. Acabo de terminar de colocar los tiles para la fase del hielo. Pongo enemigos y a probar.
@@ -1309,3 +1309,24 @@ Enemigos colocados, voy a probar. También voy a probar a poner RX = 0 en el hie
 
 Y luego a fregal.
 
+20161229
+========
+
+Cosas que he visto: 
+
+- Es posible morir saltando verticalmente sin VX sobre un enemigo y quedarte rebotando contra él indefinidamente, con lo que el juego se queda pillado ahí. Puedo resolverlo poniendo un contador de rebotes y permitiendo maximo 3, o revisando para que siempre haya VX.
+
+- Cuando resbalas se anima el muñeco y debería quedarse clavao.
+
+Había algo más pero can't remember. Voy a por estas dos cosas.
+
+20161230
+========
+
+Davidian me ha pasado ya la OGT completa y ahora el juego es top-top. Lo que no recordaba ayer era hacer que el motor de enemigos se saltase los tipo = 0 y que las fases saliesen como fase N-M en vez de como fase 2N+M.
+
+Ahora seguro que hay mil cosas que pueden quedar mejor con un poco de pulido, pero el juego está básicamente terminado. 
+
+nessc me dice que aún queda algo de espacio.
+
+Hummm... ¿Estalactitas que caen en la fase de hielo? XD Ya mañana. Hoy no habrá siesta por la tarde :-/

@@ -120,8 +120,8 @@ void enems_move (void) {
 
 	rda = rda + rda + rda; rdb = rda <= MAX_ENEMS - ENEM_PROCESS_MAX ? rda + ENEM_PROCESS_MAX : MAX_ENEMS;
 	for (rdt = rda; rdt < rdb; rdt ++) {
+		ent = (en_t [rdt] >> 4) & 0x07; if (!ent) continue;
 		ens = (en_t [rdt] & 0x0f) << 2;
-		ent = (en_t [rdt] >> 4) & 0x07;
 		slot = en_slot [rdt];
 		en_jc = 0;
 
@@ -134,6 +134,7 @@ void enems_move (void) {
 		}
 
 		if (en_x [rdt] >= cam_pos && en_x [rdt] < cam_pos + 240) {
+			// Occlusion for pezons
 			if (ent == 4) {
 				oam_index = oam_meta_spr (
 					en_x [rdt] - cam_pos, en_y1 [rdt] + SPRITE_ADJUST,

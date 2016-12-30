@@ -40,6 +40,17 @@ void wait_time_or_input (void) {
 	}
 }
 
+void wait_time_or_input_split (void) {
+	while (game_time) {
+		ticker ++; if (ticker == ticks) {
+			ticker = 0; game_time --;
+		}
+		if (rda) if (pad_poll (0)) break;
+		split (cam_pos & 0x01ff,0);
+		ppu_wait_nmi ();
+	}
+}
+
 void do_screen (unsigned char seconds) {
 	game_time = seconds; ticker = 0;
 	wait_time_or_input ();

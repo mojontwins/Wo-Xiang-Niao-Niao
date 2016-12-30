@@ -125,3 +125,6 @@
 
 #define MUSIC_FANFARE_START		0
 #define MUSIC_INGAME			1
+#define MUSIC_BONUS				3
+#define MUSIC_CLEAR				4
+#define MUSIC_NIAONIAO			5

@@ -38,7 +38,7 @@ void game_loop (void) {
 
 	gpit = 0; while (gpit ++ < 4) pal_split_wait ();
 
-	music_play (MUSIC_INGAME + (level & 1));
+	music_play (level == 8 ? MUSIC_BONUS : MUSIC_INGAME + (level & 1));
 
 	while (do_game_loop) {
 		gp_ul = update_list;			// Reset pointer to update list
@@ -94,10 +94,12 @@ void game_loop (void) {
 	set_vram_update (0);
 
 	if (game_res) {
-		ticker = ticks + ticks; while (--ticker) {
-			split (cam_pos & 0x01ff,0);
-			ppu_wait_nmi ();
-		}
+		music_play (MUSIC_NIAONIAO);
+		rda = 0; game_time = 2;
+		wait_time_or_input_split ();
+		music_play (MUSIC_CLEAR);
+		rda = 1; game_time = 5;
+		wait_time_or_input_split ();
 	}
 
 	gpit = 4; while (gpit --) pal_split_wait ();
