@@ -25,24 +25,24 @@ Intentaré hacerlo como con Super Uwol, en un #define, aunque aquí la expresió
 
 Sea x en metatiles, hay que mirar en la columna # x / 2 del mapa. Esto tiene su orden paranoia. La función original en Sir Ababol es esta:
 
-unsigned char __fastcall__ attr (unsigned char x, unsigned char y) {
-	// This function gets called a lot, but I can't think on a way to 
-	// make this run faster :-/
-	
-	if (y > 10) y = 0;		// Don't ask ... :~)
-	if (y > 9) return 0;
-	
-	// Calculate address in map data.
-	precalc1 = (x >> 1);
-	work_idx = (unsigned char *) (map_plus_offset + (precalc1 << 4) + (precalc1 << 3) + precalc1);
-	work_idx += (x & 1) + (y << 1);
-	
-	// Get metatile
-	t = (*work_idx);
-	
-	// Return metatile behaviour
-	return behaviours [t];
-}
+	unsigned char __fastcall__ attr (unsigned char x, unsigned char y) {
+		// This function gets called a lot, but I can't think on a way to 
+		// make this run faster :-/
+		
+		if (y > 10) y = 0;		// Don't ask ... :~)
+		if (y > 9) return 0;
+		
+		// Calculate address in map data.
+		precalc1 = (x >> 1);
+		work_idx = (unsigned char *) (map_plus_offset + (precalc1 << 4) + (precalc1 << 3) + precalc1);
+		work_idx += (x & 1) + (y << 1);
+		
+		// Get metatile
+		t = (*work_idx);
+		
+		// Return metatile behaviour
+		return behaviours [t];
+	}
 
 Pues sí, estaba hecho: si y > 10 -> y = 0. Al ser "y" un unsigned char, bajando de 0 se pasa a 0xff, etc. Si nos hemos salido por abajo, según los valores de las ecuaciones de movimiento, y no puede ser otro que 10, ya que justo ahí se detecta el cambio de tira (aunque en este juego NO HAY cambio de tira y eso nos lo podemos fumar).
 
@@ -56,12 +56,12 @@ En el paso de parámetros se pierde bastante tiempo. Como el motor de movimiento
 
 En todas las colisiones, que yo recuerde, se comprueban dos puntos. Puedo hacer así:
 
-void attr (void) {
-	precalc1 = (tx1 >> 1);
-	at1 = behaviours [*((unsigned char*) (map_plus_offset + (precalc1 << 4) + (precalc1 << 3) + precalc1 + (tx1 & 1) + (ty1 << 1)))];
-	precalc1 = (tx2 >> 1);
-	at2 = behaviours [*((unsigned char*) (map_plus_offset + (precalc1 << 4) + (precalc1 << 3) + precalc1 + (tx2 & 1) + (ty2 << 1)))];
-}
+	void attr (void) {
+		precalc1 = (tx1 >> 1);
+		at1 = behaviours [*((unsigned char*) (map_plus_offset + (precalc1 << 4) + (precalc1 << 3) + precalc1 + (tx1 & 1) + (ty1 << 1)))];
+		precalc1 = (tx2 >> 1);
+		at2 = behaviours [*((unsigned char*) (map_plus_offset + (precalc1 << 4) + (precalc1 << 3) + precalc1 + (tx2 & 1) + (ty2 << 1)))];
+	}
 
 Me ahorro todo el paso de parámetros y luego sólo tengo que usar at1 y at2 en las comprobaciones. Creo que así lo aceleraré bastante.
 
@@ -102,17 +102,17 @@ Para mayor velocidad y simplicidad de código, voy a meter en mkts un modo de me
 
 Me apunto esto que lo necesitaré pronto:
 
-rdb = (col_idx << 2) & 63;		// Column # is directly based upon col_idx!
-rdc = rdb & 31;
+	rdb = (col_idx << 2) & 63;		// Column # is directly based upon col_idx!
+	rdc = rdb & 31;
 
-// which nametable?
-if (rdb < 32) {
-	col_adr = NAMETABLE_A + (TOP_ADJUST << 5) + rdc;
-	col_attr_adr = NAMETABLE_A + (TOP_ADJUST >> 2) << 3 + 0x03c0 + (rdc >> 2);
-} else {
-	col_adr = NAMETABLE_B + (TOP_ADJUST << 5) + rdc;
-	col_attr_adr = NAMETABLE_B + (TOP_ADJUST >> 2) << 3 + 0x03c0 + (rdc >> 2);
-}
+	// which nametable?
+	if (rdb < 32) {
+		col_adr = NAMETABLE_A + (TOP_ADJUST << 5) + rdc;
+		col_attr_adr = NAMETABLE_A + (TOP_ADJUST >> 2) << 3 + 0x03c0 + (rdc >> 2);
+	} else {
+		col_adr = NAMETABLE_B + (TOP_ADJUST << 5) + rdc;
+		col_attr_adr = NAMETABLE_B + (TOP_ADJUST >> 2) << 3 + 0x03c0 + (rdc >> 2);
+	}
 
 ~~
 
@@ -175,8 +175,8 @@ No sé qué hacer. Voy a desconectar un rato, que siempre vienen las soluciones 
 
 Escribo unas cosas antes de parar: "teniendo resuelto el cálculo de n_pant para un enemigo t", la posición donde habría que colocar el sprite sería:
 
-X - cam_pos
-((n_pant << 8) + Xr) - ((MSB (cam_pos) << 8) + LSB (cam_pos)).
+	X - cam_pos
+	((n_pant << 8) + Xr) - ((MSB (cam_pos) << 8) + LSB (cam_pos)).
 
 Aquí sabemos algunas cosas, como que si un enemigo está activo es que su n_pant es MSB(cam_pos) o MSB (cam_pos + 1). Esto es bastante interesante. 
 
@@ -190,7 +190,7 @@ Creo que esta será la dirección que tome. Ahora voy a analizar el formato de l
 
 Por cierto, teniendo 12 gráficos de enemigos diferentes sólo necesito hacer esto:
 
-T = CBBBAAAA
+	T = CBBBAAAA
 
 Donde AAAA es el # de gráfico, BBB describe el tipo de movimiento (quitando los lineares me quedan 6 más, el 0 no cuenta) y C vale 1 si el enemigo dispara proyectiles (lo dejo por ahora es estado "reservado y ya lo pondré si cabe"). De hacerlo, el sistema de proyectiles debe ser global y utilizable también por el jugador.
 
@@ -222,7 +222,7 @@ Mientras estoy en ello, tengo que pensar algo de una vez para las velocidades de
 
 Veamos. Establezcamos estas velocidades:
 
-1/8 1/4 1/2 0 1 2 4.
+	1/8 1/4 1/2 0 1 2 4.
 
 Tengo que codificar las 1/X de alguna manera que me permita manejar todo esto de una forma buena. Por un lado, 1/X hace que se actualice cuando (frame_counter & (X-1)) == 0
 
@@ -230,14 +230,14 @@ Puedo codificarlos como 0x80 + N en el propio colocador. Voy a poner uno y así 
 
 Las velocidades son, pues:
 
-8	8 pixels por frame
-4 	4 pixels por frame
-2 	2 pixels por frame
-1 	1 pixel por frame
-129 1 pixel cada 2 frames (129 - 128 = 1)
-131 1 pixel cada 4 frames (131 - 128 = 3)
-135 1 pixel cada 8 frames (135 - 128 = 7)
-...
+	8	8 pixels por frame
+	4 	4 pixels por frame
+	2 	2 pixels por frame
+	1 	1 pixel por frame
+	129 1 pixel cada 2 frames (129 - 128 = 1)
+	131 1 pixel cada 4 frames (131 - 128 = 3)
+	135 1 pixel cada 8 frames (135 - 128 = 7)
+	...
 
 ~~
 
@@ -245,11 +245,11 @@ Ahí estamos - hay cosas raras, pero ahí estamos :-P. Los incrementos fracciona
 
 --> lo tengo aislado. Esto es lo que lo está peyendo todo
 
-*(en_x + gpit + gpit + 1) = en_rx;		// I've never been this dirty before! Update LSB.
+	*(en_x + gpit + gpit + 1) = en_rx;		// I've never been this dirty before! Update LSB.
 
 Me estoy cargando el array. Algo falla. Bocadillo de caballa. Pero ¿qué? No lo sé. Ya averiguaré que falla (¿Pensaba que los números en este ordenador eran MSB LSB?). Por ahora hago esto, y va:
 
-en_x [gpit] = en_x [gpit] & 0xff00 | en_rx;
+	en_x [gpit] = en_x [gpit] & 0xff00 | en_rx;
 
 Pasemos a otro tema. Voy a ver cómo vamos de tiempo de frame y meto la rutina básica de plataformeo para el personaje principal.
 
@@ -263,21 +263,21 @@ Lo haré además de forma que los distintos ejes se puedan cambiar al vuelo para
 
 Lo primero que tengo que hacer es sacar la fórmula para el attr, dados x e y en coordenadas de tile. Teniendo en cuenta que el mapa se divide en "chunks", tenemos que:
 
-01 0A
-02 0B
-03 0C
-04 0D
-05 0E
-06 0F
-07 10
-08 11
-09 12
+	01 0A
+	02 0B
+	03 0C
+	04 0D
+	05 0E
+	06 0F
+	07 10
+	08 11
+	09 12
 
 Sería (x >> 1) * 25 + (x & 1) * 10 + y. Urm. Muchas multipicaciones feas...
 
-rda = (x >> 1);
+	rda = (x >> 1);
 
-gp_gen = map_ptr + (rda << 4) + (rda << 3) + rda + ((x & 1) ? 10 : 0) + y
+	gp_gen = map_ptr + (rda << 4) + (rda << 3) + rda + ((x & 1) ? 10 : 0) + y
 
 Yuh, overkill, pero asín es esto. Lo que gano en el scroller lo pierdo aquí. Qué se le va a hacer. Para otro juego lo hago de otra forma y no intercalo tiles y atributos, y me busco números más amigos de las potencias de dos. Por ahora, vamos a tirar con esto.
 
@@ -301,7 +301,7 @@ No lo apunté, pero ayer en un ratito dejé listo el movimiento del juegador. Ho
 
 El número de sprite enemigo es el 12. El tipo de "enemigo" (para ahorrar código lo pongo todo aquí) será el 7, por lo que el valor que tendré que usar para crearlos en el colocador es
 
-CBBBAAAA = 01111100 = 0x7C = 124
+	CBBBAAAA = 01111100 = 0x7C = 124
 
 Voy a poner uno y tal a ver.
 
@@ -354,20 +354,20 @@ Tengo que ir metiendo ya la música, aunque sea la de Chase o algo tonto que hag
 
 Voy a hacer una lista de sonidos que necesito y a rapiñarlos del pool murciano, veamos:
 
-- Salto 						"Jump 3" (tocado, -1o)
-- Enemy hit 					"Kill"
-- Chof (agua)					"Door"
-- Coger mosca					"Item" (tocado, -1o)
-- Caer con el culo 				"Fiuuu" (tocado, -1o)
-- Botar con el culo 			"Assplossion" (recortado) + "Jump 3"
-- Disparo (tentativo) 			"Laser 2"
-- Pedo (movimiento choco)		"Wrong"
-- Start 						"Select"
-- ???? 1 						"Invisibility"
+	- Salto 						"Jump 3" (tocado, -1o)
+	- Enemy hit 					"Kill"
+	- Chof (agua)					"Door"
+	- Coger mosca					"Item" (tocado, -1o)
+	- Caer con el culo 				"Fiuuu" (tocado, -1o)
+	- Botar con el culo 			"Assplossion" (recortado) + "Jump 3"
+	- Disparo (tentativo) 			"Laser 2"
+	- Pedo (movimiento choco)		"Wrong"
+	- Start 						"Select"
+	- ???? 1 						"Invisibility"
 
 Voy a meter los sonidos y la música de Chase y ver qué tiempo de frame queda, de media.
 
-~~~
+~~
 
 Mierda, me da la impresión de que al sonar más de un sonido a la vez pierdo ya el frame en NTSC. Porca miseria. Tendría que haber empezado desde el principio con la música.
 
@@ -397,49 +397,49 @@ Pensaré en todo, churum está despertándose.
 
 Quizá pueda codificar de alguna manera qué cosas necesito (generales) en el valor de 3 bits que indica el tipo de movimiento, en plan:
 
-111
-|||
-||+- Alt
-|+-- Colisión
-+--- Fixed Point
+	111
+	|||
+	||+- Alt
+	|+-- Colisión
+	+--- Fixed Point
 
 Así, por ejemplo, en el bucle que controla los enemigos, si el bit 2 está a 1 haré automáticamente la conversión de fixed point -> integer al final del bucle. Si el bit 1 está a 1, habrá colisión. Pero quizá.... No sé.
 
 Lo de las sierras, he pensado que puedo liarla parda porque las sierras originales de MK1 necesitan el truco del sprite que oculta (o sea, poner un sprite de mayor prioridad (antes en la OAM) pero con el bit de "baja prioridad" levantado, de forma que se pinte antes de los importantes, pero detrás del escenario, efectivamente ocultando parte de los sprites importantes - el truco de SMB3) y ya es mucha tela marinera. Lo que haré será esta variación muy sencilla:
 
-  ···
-  ·X·
-  ··o 
+	  ···
+	  ·X·
+	  ··o 
 
 Donde X es el tile, o el enemigo, y · la trayectoria, en el sentido de las agujas del reloj o el contrario.
 
 Simplificando, dos modos, cuatro estados.
 
-Modo clockwise: L U R D.
-- Si state & 1 = 0: Horizontal.
-- Si state & 1 = 1: Vertical.
-- Si state >> 1 = 0: Decrementando
-- Si state >> 1 = 1: Incrementando
+	Modo clockwise: L U R D.
+	- Si state & 1 = 0: Horizontal.
+	- Si state & 1 = 1: Vertical.
+	- Si state >> 1 = 0: Decrementando
+	- Si state >> 1 = 1: Incrementando
 
-Modo counter-clockwise: L D R U.
-- Si state & 1 = 0: Horizontal.
-- Si state & 1 = 1: Vertical.
-- Si state == 0 || state == 3: Decrementando
-- Si state == 1 || state == 2: Incrementando;
+	Modo counter-clockwise: L D R U.
+	- Si state & 1 = 0: Horizontal.
+	- Si state & 1 = 1: Vertical.
+	- Si state == 0 || state == 3: Decrementando
+	- Si state == 1 || state == 2: Incrementando;
 
-o lo que es lo mismo:
-- Si ((state + 1) & 3) >> 1 == 0: Decrementando
-- Si ((state + 1) & 3) >> 1 == 1: Incrementando
+	o lo que es lo mismo:
+	- Si ((state + 1) & 3) >> 1 == 0: Decrementando
+	- Si ((state + 1) & 3) >> 1 == 1: Incrementando
 
 Todo esto se simplifica en este pseudocódigo:
 
-rda = cw ? (state >> 1) : (((state + 1) & 3) >> 1);
-d = rda ? V : -V;
-if (state & 1) y += d; else x += d;
+	rda = cw ? (state >> 1) : (((state + 1) & 3) >> 1);
+	d = rda ? V : -V;
+	if (state & 1) y += d; else x += d;
 
 A lo que habría que añadir el cambio de estados. Siempre se avanza 32 pixels desde la posición inicial, así que podríamos llevar la cuenta:
 
-ct = (ct + V) & 31; if (!ct) state = (state + 1) & 3;
+	ct = (ct + V) & 31; if (!ct) state = (state + 1) & 3;
 
 Creo que es la forma más compacta de programar algo así, y daría de la leche de juego. Será lo próximo a lo que le de fran. Además, no necesita ni punto fijo ni colisión, lo que me lleva al problema de la falta de bits. O sea, 000 no puede ser porque eso es "vacío", 001 ya está pillado, x1x no, porque no necesita FP, y 1xx tampoco, porque no necesita colisión.
 
@@ -467,16 +467,17 @@ Veamos, esto lo tengo que resolver ya. Parece mentira que cosas tan tontas me oc
 
 Estoy pensando que podría gastar 48 bytes en otro array "en_attrs" y rellenar este y en_t de la siguiente forma:
 
-- en_t -> AFCDXTTT
-- en_attrs -> XXXXSSSS
+	- en_t -> AFCDXTTT
+	- en_attrs -> XXXXSSSS
 
 Donde:
-A -> Activo. Siempre a 1, menos cuando el enemigo no existe (en ese caso, todo en_t == 0).
-F -> Fixed Point. Inicializar valores al crear y actualizar al finalizar.
-C -> Collision. Realizar colisión.
-D -> Dispara.
-TTT -> Tipo de rutina de movimiento
-SSSS -> # de gráfico.
+
+	A -> Activo. Siempre a 1, menos cuando el enemigo no existe (en ese caso, todo en_t == 0).
+	F -> Fixed Point. Inicializar valores al crear y actualizar al finalizar.
+	C -> Collision. Realizar colisión.
+	D -> Dispara.
+	TTT -> Tipo de rutina de movimiento
+	SSSS -> # de gráfico.
 
 Creo que si lo estructuro así el tema irá sobre ruedas. Lo que tengo que ver es si no me voy a quedar sin memoria con los nuevos arrays que necesito (enf_x, enf_y, enf_vx, enf_vy, en_attrs son 96+96+96+96+48 = ¡¡432 bytes!!). Voy a crear los arrays antes de montar más historias a ver si me queda suficiente RAM. Si no tendré que inventarme algo:
 
@@ -484,7 +485,7 @@ pre-idea: hacer que enf_x, enf_y, enf_vx y enf_vy sean sólo arrays de 6 element
 
 De hecho lo voy a mirar antes que nada porque si es viable es la mejor forma. Hay que ser conservadores con la memoria: puede que tenga esos 432 bytes, pero ¿no los necesitaré para otras cosas en el futuro?
 
-~~~
+~~
 
 No lo voy a poder enganchar directamente, pero está claro que siempre se actualizan 6 enemigos (pantalla actual de cam_pos y siguiente), y es tontería estar guardándolos todos. Aquí el problema radica, principalmente, en saber cuándo inicializar los valores de un enemigo y en saber cuándo queda este libre.
 
@@ -500,7 +501,7 @@ Espérate porque creo que la mierda esta de los slots no se usa para nada - es q
 
 Joder, creo que esto era porque cuando hice Sir Ababol no sabía controlar los sprites de la OAM de forma dinámica y lo tenía todo por putos slots... Joder, por eso se llama "en_slot" el array. Esto es más grande que barcelona. Voy a cambiar algunas cosas.
 
-~~~~
+~~~
 
 Joder, lo he quitado, he salvado toneladas de memoria, me he quitado ciclos de procesador, y he arreglado lo de que a veces no se mueven cuando deberían. La leche en polvo, esto es la puta hostia. Lo flipo conmigo. Vaya cagada, primosaurio. En serio. La leche.
 
@@ -525,16 +526,16 @@ if (rda < orda) update (last_half);
 
 Es un tanto complejo de ver, menos mal que llevo diarios. Creo que así puede funcionar y ahorraré bastante mandanga. Por supuesto lo más rápido sería tenerlos todos creados y tal, pero haciendo cuentas, ahora mismo los enemigos se llevan esta RAM:
 
-en_t 		48 bytes
-en_attr 	48 bytes
-en_r 		48 bytes
-en_x 		96 bytes
-en_y 		48 bytes
-en_mx 		48 bytes
-en_my 		48 bytes
-en_slot 	48 bytes <- lo dejo porque lo necesitaré.
+	en_t 		48 bytes
+	en_attr 	48 bytes
+	en_r 		48 bytes
+	en_x 		96 bytes
+	en_y 		48 bytes
+	en_mx 		48 bytes
+	en_my 		48 bytes
+	en_slot 	48 bytes <- lo dejo porque lo necesitaré.
 
-9 x 48 = 432 bytes. Es un pepino. 
+	9 x 48 = 432 bytes. Es un pepino. 
 
 Además, así puedo crear los arrays en ZP, con lo que ahorro ciclos.
 
@@ -544,15 +545,15 @@ Esto va a costar. Voy a ello. Además, no podré probarlo hasta que meta un fant
 
 Creo que por ahora voy a pasar de los atributos y de las mierdas, y a hacerlo como siempre.
 
-1 -> lineal
-2 -> saw
-3 -> buzzer
-4 -> fanty
-5 -> pezon
-6 -> jumper
+	1 -> lineal
+	2 -> saw
+	3 -> buzzer
+	4 -> fanty
+	5 -> pezon
+	6 -> jumper
 
-Si >= 4 -> fp.
-Si >= 6 -> colision.
+	Si >= 4 -> fp.
+	Si >= 6 -> colision.
 
 Y a tomar por culo.
 
@@ -583,7 +584,7 @@ Esto ha solucionado algunas cosas, pero no todas. Vamos a tener que seguir miran
 
 Más optimizaciones hechas, pero sigue habiendo "picos" cuando pasan muchas cosas a la vez. Esto parece que no puedo evitarlo. Lo que sí voy a hacer es medio modificar famitone2, de forma que si una posición fija de RAM libre ($01bf, en mi configuración) vale <> 0, no actualiza los streams de SFX. Esto sólo vale un frame, la propia famitone2 volverá a poner a 0 la posición $01bf en cada ejecución. Esto me sirve para que cuando haya colisión y salte sonidos poner $01bf a 1 y que no salte esa parte del código en ese frame, ganando algo de tiempo. Tampoco se nota si está un frame retrasado.
 
-~~~
+~~
 
 Tras más mierdas de estas, he metido los pezones con éxito. Ahora voy a las sierras estas que van dándole vueltas a un tile.
 
@@ -591,9 +592,9 @@ Tras más mierdas de estas, he metido los pezones con éxito. Ahora voy a las si
 
 Increíble, han funcionado a la primera con tres jodidas lineas de código. Tres. Jodidas. Lineas. Bastante densas, eso sí:
 
-delta = (en_my [rdt] ? (en_r [rdt] >> 1) : (((en_r [rdt] + 1) & 3) >> 1)) ? GYROSAW_V : -GYROSAW_V;
-if (en_r [rdt] & 1) en_y [rdt] += delta; else en_rx += delta;
-en_mx [rdt] = (en_mx [rdt] + GYROSAW_V) & 31; if (!en_mx [rdt]) en_r [rdt] = (en_r [rdt] + 1) & 3;
+	delta = (en_my [rdt] ? (en_r [rdt] >> 1) : (((en_r [rdt] + 1) & 3) >> 1)) ? GYROSAW_V : -GYROSAW_V;
+	if (en_r [rdt] & 1) en_y [rdt] += delta; else en_rx += delta;
+	en_mx [rdt] = (en_mx [rdt] + GYROSAW_V) & 31; if (!en_mx [rdt]) en_r [rdt] = (en_r [rdt] + 1) & 3;
 
 Luego pinté otra paleta y algunas pantallas de la segunda tira para ver si lo había hecho bien y cambiar de tira de mapa (en este juego, de nivel) funcionaba bien... Y coño que si funciona. ¡Es genial!
 
@@ -677,7 +678,7 @@ O NO - sólo tengo que hacerme un tileset con todas tiras, que me acabo de acord
 
 Fase del hielo, lista de tiles para hacer el tileset.
 
-00,40,41,30,21,05,22,23,08,09,26,27,28,16,14,31
+	00,40,41,30,21,05,22,23,08,09,26,27,28,16,14,31
 
 ~~
 
@@ -696,7 +697,7 @@ La otra cosa que se me había ocurrido no sé si será posible "fácilmente": co
 
 Fase del desierto, lista de tiles para hacer el tileset.
 
-00,01,02,03,04,05,42,43,44,45,10,11,15,13,14,31
+	00,01,02,03,04,05,42,43,44,45,10,11,15,13,14,31
 
 ~~
 
@@ -738,7 +739,7 @@ Otra cosa: también molaría que las fases 5-8 (1-4 repetidas) tuviesen la palet
 
 Vamos, que tengo que hacer 12 paletas más (4 más las 8 alternativas para el juego modo "N").
 
-~~~
+~~
 
 Ángel me ha sugerido un tipo de enemigo que puede venir bien y hacer secciones muy chulas: un bloque que no te mata, pero que al "pisarlo" (o culiarlo) se va para abajo a toda leche y luego vuelve a subir poco a poco. En realidad funcionaría como una plataforma móvil vertical (a modo interno, quiero decir, si tiene que arrastrar al jugador), así que tendré que introducir en la ecuación las variables de nombre misterioso (no sé qué coño significaban, ni si eran siglas, pero llevo años usándolas), al menos en el eje Y: pgtmy (¿Player GoTten MY? es posible).
 
@@ -763,13 +764,13 @@ Creo que podría "enganchar" esto en la colisión. Si hay colisión, primero se 
 
 Tenemos que tener dos estados:
 
-- Idle: 
-	si en_y > en_y1 -> en_y -= BLOCO_VY_IDLE; 
-	si en_y < en_y1 -> en_y = en_y1;
-	si collide (player, en), pry entre en_y -16 y en_y - 12 --> Estado = Falling
-- Falling: 
-	si en_y < 240 -> en_y += BLOCO_VY_FALL;
-	si !collide (player, en) --> Estado = Idle.
+	- Idle: 
+		si en_y > en_y1 -> en_y -= BLOCO_VY_IDLE; 
+		si en_y < en_y1 -> en_y = en_y1;
+		si collide (player, en), pry entre en_y -16 y en_y - 12 --> Estado = Falling
+	- Falling: 
+		si en_y < 240 -> en_y += BLOCO_VY_FALL;
+		si !collide (player, en) --> Estado = Idle.
 
 Voy a pintar un bloque en el maltrecho set de gráficos (sustituyendo uno de los enemigos mierder de jet paco) y pruebow.
 
@@ -886,14 +887,14 @@ REMEMBER: Para colocar Gyrosaws:
 
 - Tienes que colocarlas en el sitio correcto, dependiendo si las quieres CW o CCW [vaya: recordando que la primera dirección siempre es izquierda]:
 
-CW: ··· CCW: ··o
-    ·X·      ·X·
-    ··o      ···
+	CW: ··· CCW: ··o
+	    ·X·      ·X·
+	    ··o      ···
 
 - Hay que seleccionar, con el atributo del enemigo, la dirección. CW es 1, CCW es 0.
 - El número con el que hay que crear esto (hasta que modifique el colocador: de hoy no pasa) es 0x2B = 43
 
-~~~~
+~~~
 
 Qué bonito queda todo. He cambiado algo la paleta en esta fase para que lin lin sea mejor (Qi Pao verde) y para que los sprites rosas salgan más anaranjados. Queda mejor.
 
@@ -928,11 +929,11 @@ Sobre lo del rano: lo acabo de ver: hay algo ahí haciendo de las suyas. El espa
 
 en_slot es el array más cercano.
 
-00066D	en_cell
-00066E	en_slot
-00069E	plives
-00069F	opscore
-0006A0	pobjs
+	00066D	en_cell
+	00066E	en_slot
+	00069E	plives
+	00069F	opscore
+	0006A0	pobjs
 
 La cosa es que plives y opscore parecen tener bien los valores... -> Es cuando salto. Cuando le doy al botón de salto, el valor que haya se sobrescribe con 0x08! What. The. Fuck. Um - ¿no era 8 el número de abejas que había que pillar? Me suena a cheat mal puesto.
 
@@ -972,7 +973,7 @@ Todos los tramollismos estos están resueltos. La música está prácticamente m
 
 Creo que podría dedicarme tranquilamente a eso hoy mientras hago las tareas del curro de verdad, en descansitos, que es un trabajo bastante divertido y muy agradecido.
 
-~~~
+~~
 
 Empezamos midiendo cuanto ocupa ahora (de aquella manera, ya tu sabeh). Tenemos 263 bytes libres. Cágate lorito y empezamos. Lo primero es cargarse todo el soporte para cambiar de juego (esto estaba pensado para ser lanzado desde un menú de un multicart y, dependiendo de los valores que leyese de RAM, cambiar de sprite, paletas y motor). Apaño primero el make.bat y quito los gráficos y paletas extra. Eso también me liberará bastantes patrones en la tabla 1.
 
@@ -1001,7 +1002,7 @@ En poco más de 1Kb tengo que meter:
 
 Sinceramente, no sé cómo coño lo voy a hacer. (Sí lo sé, pero me gusta quejarme)
 
-~~~~ 
+~~~ 
 
 Sobre la optimización, voy a comprobar qué sprites necesitan realmente estar girados para ahorrarme definiciones de metasprites, que son unos cuantos bytes potenciales.
 
@@ -1017,18 +1018,18 @@ Cuando coja el hotspot, se debe recordar la posición "X" [¡ojal con el autoava
 
 Veamos qué se hace en game_init (). Marco las cosas que debría cambiar o adaptar.
 
-[X]	cam_pos = 0; 
-	
-	map_ptr = (unsigned char *) (map + (level >> 1) * COLUMN_SIZE * MAP_W);
-	pal_bg (world_pals [level & 7]);
-	pal_spr ((level >> 1) == 1 ? pal_fg_1 : pal_fg_0);
-	mtile_pattern_offsets = (unsigned char *) world_mpos [level & 7];
-	behs = (unsigned char *) world_behs [level & 7];
+	[X]	cam_pos = 0; 
+		
+		map_ptr = (unsigned char *) (map + (level >> 1) * COLUMN_SIZE * MAP_W);
+		pal_bg (world_pals [level & 7]);
+		pal_spr ((level >> 1) == 1 ? pal_fg_1 : pal_fg_0);
+		mtile_pattern_offsets = (unsigned char *) world_mpos [level & 7];
+		behs = (unsigned char *) world_behs [level & 7];
 
-[X]	enems_init_level ();
-[X]	player_init ();
+	[X]	enems_init_level ();
+	[X]	player_init ();
 
-[X]	pobjs = 0; opobjs = 0;
+	[X]	pobjs = 0; opobjs = 0;
 
 En primer lugar lo suyo es mover cam_pos tras player_init y hacer la inicialización como Cthulhu manda:
 
@@ -1062,7 +1063,7 @@ Si pcheckpoint == 0 -> nuevo nivel. Si pcheckpoint != 0 -> valor inicial de prx,
 
 Miedou me da. Voy a ver si tal y cual.
 
-~~~~ 
+~~~ 
 
 Hecho. Vamos a probar. Pongo uno cerca y pruebo y tal.
 
@@ -1104,8 +1105,8 @@ Esto implica sustituir algunas constantes por variables a las que tengo que hace
 
 Según mis cálculos (que he puesto en Nesdev para que los super dales fran me los validen, que es de gratis y siempre viene estupendamente), las conversiones serían, para velocidades y aceleraciones:
 
-V(NTSC) = V(PAL) * 50 / 60
-A(NTSC) = A(PAL) * 50 / 72
+	V(NTSC) = V(PAL) * 50 / 60
+	A(NTSC) = A(PAL) * 50 / 72
 
 Ahora que lo veo, parece interesante notar que V(PAL) = 1.2 * V(NTSC), y que, si te fijas, 72 = 60 * 1.2, y que, además, 72 * 5 / 6 = 60. Seguro que la que he liado para encontrar las constantes es un pifostio increíble y que con lo de arriba lo hubiese averiguando antes, pero mi cabeza ya no es lo que era, duermo poco, tengo mil paranoias, y, total, con que funcione...
 
@@ -1116,21 +1117,21 @@ Total, con que se juegue parecido, ya me vale. Como solo estoy jugando con 4 bit
 - Que Lin Lin se mueva igual de rápido (¡más o menos!) en PAL y en NTSC.
 - Que salte igual de alto y llegue igual de lejos (¡más o menos!) en PAL y en NTSC.
 
-						PAL NTSC
-PLAYER_VY_FALLING_MAX	64	53
-PLAYER_G				4	3 		(2.8!)
-PLAYER_VY_JUMP_INITIAL	16	13
-PLAYER_VY_JUMP_MAX		64	54
-PLAYER_VY_JUMP_BUTT		96	80
-PLAYER_VY_JUMP_A_STEPS  16	13
-PLAYER_VY_SINK			2 	2 		(1.6!)
-PLAYER_AY_JUMP 			8	6 		(5.5!)
-PLAYER_VX_MAX			32	26
-PLAYER_AX				4	3 		(2.8!)
-PLAYER_RX				4 	3 		(2.8!)
-PLAYER_AX_SLIP			1 	1 		(nada que hacer)
-PLAYER_RX_SLIP			1 	1
-PLAYER_V_REBOUND		56	46
+							PAL NTSC
+	PLAYER_VY_FALLING_MAX	64	53
+	PLAYER_G				4	3 		(2.8!)
+	PLAYER_VY_JUMP_INITIAL	16	13
+	PLAYER_VY_JUMP_MAX		64	54
+	PLAYER_VY_JUMP_BUTT		96	80
+	PLAYER_VY_JUMP_A_STEPS  16	13
+	PLAYER_VY_SINK			2 	2 		(1.6!)
+	PLAYER_AY_JUMP 			8	6 		(5.5!)
+	PLAYER_VX_MAX			32	26
+	PLAYER_AX				4	3 		(2.8!)
+	PLAYER_RX				4 	3 		(2.8!)
+	PLAYER_AX_SLIP			1 	1 		(nada que hacer)
+	PLAYER_RX_SLIP			1 	1
+	PLAYER_V_REBOUND		56	46
 
 Probemos con esta mierdaw.
 
@@ -1160,10 +1161,10 @@ Bueno, no. A veces hace cosas raras. Creo que tengo que examinar bien la asignac
 
 Voy a escribir. Cada pantalla tiene 3 enemigos. Hay 6 slots, 0 a 5. Según la pantalla, estos son los slots que ocuparía cada enemigo de cada pantalla:
 
-0 1 2 3 4 5 6 7 8 9 a b c d e f ...             enemigo
-0 1 2 3 4 5 0 1 2 3 4 5 0 1 2 3 4 5 0 1 2 3 4 5 slot
-     |     |     |     |     |     |     |     | ...
-0    |1    |2    |3    |4    |5    |6    |7    | ... hasta 15
+	0 1 2 3 4 5 6 7 8 9 a b c d e f ...             enemigo
+	0 1 2 3 4 5 0 1 2 3 4 5 0 1 2 3 4 5 0 1 2 3 4 5 slot
+	     |     |     |     |     |     |     |     | ...
+	0    |1    |2    |3    |4    |5    |6    |7    | ... hasta 15
 
 Al empezar el juego, cam_pos = 0, estamos en la pantalla rda = 0. Tenemos que cargar los enemigos de las pantallas 0 y 1.
 Al avanzar un poco, empezará a verse la pantalla 1. Los enemigos están ahí ya.
@@ -1177,22 +1178,22 @@ Avanzando hacia la izquierda, cuando rda != rda_old, tengo que cargar rda.
 
 Voy a recapacitar.
 
-slot_offs [] = {0, 3}
+	slot_offs [] = {0, 3}
 
-rda = 0. Avanzo... Cuando rda cambia a 1:
-[cargo los enemigos (rda+1)*3 y siguientes a partir de slots_offs [(rda + 1) & 1];]
--> cargo los enemigos 6 7 8 a partir de slots_offs [0] = 0 1 2.
+	rda = 0. Avanzo... Cuando rda cambia a 1:
+	[cargo los enemigos (rda+1)*3 y siguientes a partir de slots_offs [(rda + 1) & 1];]
+	-> cargo los enemigos 6 7 8 a partir de slots_offs [0] = 0 1 2.
 
-rda = 1. Avanzo... Cuando rda cambia a 2:
-[cargo los enemigos (rda+1)*3 y siguientes a partir de slots_offs [(rda + 1) & 1];]
--> cargo los enemigos 9 a b a partir de slots_offs [1] = 3 4 5.
+	rda = 1. Avanzo... Cuando rda cambia a 2:
+	[cargo los enemigos (rda+1)*3 y siguientes a partir de slots_offs [(rda + 1) & 1];]
+	-> cargo los enemigos 9 a b a partir de slots_offs [1] = 3 4 5.
 
-rda = 2. Se ve cacho de 2 y cacho de 3.
-En este momento tengo 6 7 8 9 10 11. Ahora retrocedo!
+	rda = 2. Se ve cacho de 2 y cacho de 3.
+	En este momento tengo 6 7 8 9 10 11. Ahora retrocedo!
 
-rda = 1, se ve cacho de 1 y cacho de 3.
-[cargo los enemigos (rda)*3 y siguientes a partir de slots_offs [(rda) & 1];]
--> cargo los enemigos 3 4 5 a partir de slots_offs [1] = 3 4 5
+	rda = 1, se ve cacho de 1 y cacho de 3.
+	[cargo los enemigos (rda)*3 y siguientes a partir de slots_offs [(rda) & 1];]
+	-> cargo los enemigos 3 4 5 a partir de slots_offs [1] = 3 4 5
 
 Voy a revisar esto en el código.
 
@@ -1224,7 +1225,7 @@ Pezon
 
 	- Puedo usar los dos: los normales son 0x48; las bolas de lava son 0x4a
 
-~~~
+~~
 
 Voy a colocar unos blocos para probar como funciona todo. Y hago combos y  mierdas divertidas :D
 
@@ -1240,7 +1241,7 @@ La idea sería hacer que en ese ciclo que ahora mismo tengo libre se calculasen 
 
 Tengo un rato, voy a ver adonde llego. Tendré que hacer a pelo los cálculos pero luego generaré una tabla de paletas precalculada con los desplazamientos hechos.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 20161207
 ========
