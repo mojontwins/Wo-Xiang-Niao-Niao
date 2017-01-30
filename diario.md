@@ -315,11 +315,11 @@ Probaré.
 
 Veamos, vamos a organizarnos un poco. Necesito las siguientes tareas previas:
 
-1.- Rediseñar el tileset, dividirlo en dos.
-1.- Dibujar el nuevo mapa.
-2.- Hacer el nuevo conversor (diseñar el formato, aunque es tontería... no creo que haya problemas).
-3.- Modificar la rutina de scroll - ojete, poder cambiar la "tira" o el "offset" de los tiles que se pintan.
-4.- Para que esto siga siendo rápido y bonito, los comportamientos de los tiles de todas las tiras de 16 tienen que ser equivalentes.
+- Rediseñar el tileset, dividirlo en dos.
+- Dibujar el nuevo mapa.
+- Hacer el nuevo conversor (diseñar el formato, aunque es tontería... no creo que haya problemas).
+- Modificar la rutina de scroll - ojete, poder cambiar la "tira" o el "offset" de los tiles que se pintan.
+- Para que esto siga siendo rápido y bonito, los comportamientos de los tiles de todas las tiras de 16 tienen que ser equivalentes.
 
 El nuevo formato, igualmente por columnas de 10 tiles de alto. Esta vez, un byte por cada dos tiles en horizontal, más 5 bytes con los atributos. Esto hacen 10 + 5 bytes en total por columna.
 
@@ -501,7 +501,7 @@ Espérate porque creo que la mierda esta de los slots no se usa para nada - es q
 
 Joder, creo que esto era porque cuando hice Sir Ababol no sabía controlar los sprites de la OAM de forma dinámica y lo tenía todo por putos slots... Joder, por eso se llama "en_slot" el array. Esto es más grande que barcelona. Voy a cambiar algunas cosas.
 
-~~~
+~~
 
 Joder, lo he quitado, he salvado toneladas de memoria, me he quitado ciclos de procesador, y he arreglado lo de que a veces no se mueven cuando deberían. La leche en polvo, esto es la puta hostia. Lo flipo conmigo. Vaya cagada, primosaurio. En serio. La leche.
 
@@ -894,7 +894,7 @@ REMEMBER: Para colocar Gyrosaws:
 - Hay que seleccionar, con el atributo del enemigo, la dirección. CW es 1, CCW es 0.
 - El número con el que hay que crear esto (hasta que modifique el colocador: de hoy no pasa) es 0x2B = 43
 
-~~~
+~~
 
 Qué bonito queda todo. He cambiado algo la paleta en esta fase para que lin lin sea mejor (Qi Pao verde) y para que los sprites rosas salgan más anaranjados. Queda mejor.
 
@@ -1002,7 +1002,7 @@ En poco más de 1Kb tengo que meter:
 
 Sinceramente, no sé cómo coño lo voy a hacer. (Sí lo sé, pero me gusta quejarme)
 
-~~~ 
+~~
 
 Sobre la optimización, voy a comprobar qué sprites necesitan realmente estar girados para ahorrarme definiciones de metasprites, que son unos cuantos bytes potenciales.
 
@@ -1063,7 +1063,7 @@ Si pcheckpoint == 0 -> nuevo nivel. Si pcheckpoint != 0 -> valor inicial de prx,
 
 Miedou me da. Voy a ver si tal y cual.
 
-~~~ 
+~~
 
 Hecho. Vamos a probar. Pongo uno cerca y pruebo y tal.
 
@@ -1240,8 +1240,6 @@ La idea sería hacer que en ese ciclo que ahora mismo tengo libre se calculasen 
 ¿Qué gano con esto? Pues que los mapas pasen de ocupar 15 bytes por columna de 32 pixels de ancho (15*128 = 1920 bytes por tira) a ocupar 10 bytes (1280 bytes por tira), con lo que a lo mejor me cabe alguna fase más.
 
 Tengo un rato, voy a ver adonde llego. Tendré que hacer a pelo los cálculos pero luego generaré una tabla de paletas precalculada con los desplazamientos hechos.
-
-~~~~~~~~~~~~~~~~~~~~~~
 
 20161207
 ========
