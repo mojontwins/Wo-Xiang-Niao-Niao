@@ -53,6 +53,8 @@
 
 #define PLAYER_VY_FALLING_MAX	64
 #define PLAYER_G				4
+#define PLAYER_VY_FALLING_MAX_BUTT 96
+#define PLAYER_G_BUTT           6
 #define PLAYER_VY_JUMP_INITIAL	16
 #define PLAYER_VY_JUMP_MAX		64	
 #define PLAYER_VY_JUMP_BUTT		96
@@ -128,3 +130,5 @@
 #define MUSIC_BONUS				3
 #define MUSIC_CLEAR				4
 #define MUSIC_NIAONIAO			5
+
+#define SCROLL_ADJUST_FRAMES	25

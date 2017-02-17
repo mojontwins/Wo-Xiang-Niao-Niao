@@ -17,6 +17,9 @@ void screen_title (void) {
 		p_s (10, 17, "PRESS START!");
 	} 	
 	p_s (9, 25, "@ 2016 XIN XIN");
+#ifdef NESDEV
+	p_s (3, 27, "2016 NESDEV COMPO EDITION!");
+#endif	
 }
 
 void screen_level (void) {

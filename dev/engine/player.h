@@ -6,7 +6,7 @@ void player_init (void) {
 	py = 64 << FIX_BITS;
 	pry = 16;
 
-	prx = pcheckpoint ? pcheckpoint : 16;
+	prx = 4 + (pcheckpoint ? pcheckpoint : 16);
 	px = prx << FIX_BITS;
 	
 	prx_advance = prx + 64;
@@ -18,6 +18,7 @@ void player_init (void) {
 	do_game_loop = 1;
 	pen = 1;
 	psoff = 0;
+	pbutt = 0;
 }
 
 void player_kill (signed char sign) {
@@ -43,7 +44,11 @@ void player_move (void) {
 
 		// Gravity
 		if (!pgotten) {
-			if (pvy < PLAYER_VY_FALLING_MAX) pvy += PLAYER_G; else pvy = PLAYER_VY_FALLING_MAX;
+			if (pbutt && !phasbounced) {
+				pvy = pvy + PLAYER_G_BUTT; if (pvy > PLAYER_VY_FALLING_MAX_BUTT) pvy = PLAYER_VY_FALLING_MAX_BUTT;
+			} else {
+				pvy = pvy + PLAYER_G; if (pvy > PLAYER_VY_FALLING_MAX) pvy = PLAYER_VY_FALLING_MAX;
+			}
 		}
 
 		// Move
@@ -79,7 +84,7 @@ void player_move (void) {
 			} else if (pvy + pgtmy > 0) {
 				cy1 = cy2 = (pry + 15) >> 4;
 				cm_two_points ();
-				if (((pry - 1) & 15) < 4 && ((at1 & 12) || (at2 & 12))) {
+				if (((pry - 1) & 15) < 6 && ((at1 & 12) || (at2 & 12))) {
 					pgotten = pvy = 0;
 					pry = (cy1 - 1) << 4;
 					py = pry << FIX_BITS;
@@ -117,7 +122,8 @@ void player_move (void) {
 			if (ppossee || phit) pbutt = 0; else {
 				if (pad & PAD_B) {
 					if (pbutt == 0) {
-						pbutt = 1; pj = 0;
+						pbutt = 1; pj = 0; 
+						phasbounced = 0;
 						sfx_play (SFX_BUTT_FALL, SC_PLAYER);
 					}
 				}
@@ -185,7 +191,7 @@ void player_move (void) {
 		if (pvx) {
 			pidlt = 0;
 		} else {
-			if (pidlt < ticks) pidlt ++;
+			if (pidlt < SCROLL_ADJUST_FRAMES) pidlt ++;
 		}
 	}
 

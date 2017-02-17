@@ -48,6 +48,7 @@
 				// Collide from top w/ pbutt on?
 				if (pbutt && pry < en_y [rdt] && ent != 2 && (ent != 4 || ens != (FIREBALL << 2))) {
 					pvy = -PLAYER_VY_JUMP_BUTT;
+					phasbounced = 1;
 					// en_jc == 1 when just changed direction.
 					// This prevents the player throwing enemies out of their trajectories.
 					if (!en_jc) en_my [rdt] = ABS (en_my [rdt]); // DOWN!

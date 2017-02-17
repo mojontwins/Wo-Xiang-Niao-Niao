@@ -1,11 +1,17 @@
 // Vostok Engine MK2 v1.0
 // Copyleft 2016 by The Mojon Twins
 
+// Frame counter for frame skip
+unsigned char fskip_counter;
+
+// Current level
+unsigned char cur_level;
+
+// Start with...
+unsigned char pobjs_starter;
+
 // 50 or 60 depending on TV system
 unsigned char ticks, halfticks;				
-
-// Update list for VBlank updates
-static unsigned char update_list [UPDATE_LIST_SIZE * 3 + 1];
 
 // Fade in / fade out
 signed char fader;
@@ -43,11 +49,6 @@ unsigned char bcd_score [5];
 // Palette cycle
 unsigned char pal_cycle [3];
 
-// Frame counter for frame skip
-unsigned char fskip_counter;
+// Update list for VBlank updates
+static unsigned char update_list [UPDATE_LIST_SIZE * 3 + 1];
 
-// Current level
-unsigned char cur_level;
-
-// Start with...
-unsigned char pobjs_starter;

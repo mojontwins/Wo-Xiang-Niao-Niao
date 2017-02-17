@@ -13,7 +13,7 @@ void camera_do (void) {
 		if (pvx) {
 			if (prx < CAMERA_MIN + cam_pos) cam_pos = prx - CAMERA_MIN;
 			if (prx > CAMERA_MAX + cam_pos) cam_pos = prx - CAMERA_MAX; 	
-		} else if (pidlt == ticks) {
+		} else if (pidlt == SCROLL_ADJUST_FRAMES) {
 			if (prx < 120 + cam_pos) cam_pos --;
 			if (prx > 120 + cam_pos) cam_pos ++;
 		}

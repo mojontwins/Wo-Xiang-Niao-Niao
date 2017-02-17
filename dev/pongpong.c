@@ -2,6 +2,7 @@
 // Copyleft 2016 by The Mojon Twins
 
 //#define DEBUG
+#define NESDEV
 
 // Shiru's
 
